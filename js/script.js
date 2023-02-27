@@ -30,11 +30,11 @@ jQuery(function ($) {
   );
 
   $(document).ready(function () {
-    $('.navegacion li').click(
+    $('.navegacion li').hover(
       function () {
         if ($(this).hasClass("con-hijos")) {
           if ($(this).hasClass("seleccionado")) {
-            $(this).find('ul').fadeOut();
+            $(this).find('ul').hide();
             $(this).removeClass('seleccionado');
           } else {
             $(this).find('ul').fadeIn();
@@ -44,13 +44,14 @@ jQuery(function ($) {
       }
     );
 
-    $('.buscador').hover(
+    $('.buscador').click(
       function () {
-        if ($(this).hasClass("seabre")) {
-          $(this).removeClass('seabre').addClass('secierra');
-        } else {
-          $(this).addClass('seabre').removeClass('secierra');
-        }
+        $(this).addClass('seabre').removeClass('secierra');
+      }
+    );
+    $('.buscador').focusout(
+      function () {
+        $(this).removeClass('seabre').addClass('secierra');
       }
     );
   });
